@@ -64,37 +64,6 @@ public class Rover {
         }
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Rover rover = (Rover) o;
-
-        if (y != rover.y) return false;
-        if (x != rover.x) return false;
-        return getDirection()
-          != null ? getDirection().equals(rover.getDirection()) : rover.getDirection() == null;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getDirection() != null ? getDirection().hashCode() : 0;
-        result = 31 * result + y;
-        result = 31 * result + x;
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Rover{" +
-            "direction='" + getDirection() + '\'' +
-            ", y=" + y +
-            ", x=" + x +
-            '}';
-    }
-
   private void setDirection(String direction) {
     this.direction = direction;
     this.directionType = Direction.create(direction);
@@ -102,5 +71,42 @@ public class Rover {
 
   public String getDirection() {
     return direction;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    Rover rover = (Rover) o;
+
+    if (y != rover.y) {
+      return false;
+    }
+    if (x != rover.x) {
+      return false;
+    }
+    return directionType == rover.directionType;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = directionType != null ? directionType.hashCode() : 0;
+    result = 31 * result + y;
+    result = 31 * result + x;
+    return result;
+  }
+
+  @Override
+  public String toString() {
+    return "Rover{" +
+      "directionType=" + directionType +
+      ", y=" + y +
+      ", x=" + x +
+      '}';
   }
 }

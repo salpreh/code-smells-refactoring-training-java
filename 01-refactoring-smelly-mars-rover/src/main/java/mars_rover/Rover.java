@@ -2,7 +2,6 @@ package mars_rover;
 
 public class Rover {
 
-    private String direction;
     private Direction directionType;
     private int y;
     private int x;
@@ -77,12 +76,7 @@ public class Rover {
   }
 
   private void setDirection(String direction) {
-    this.direction = direction;
     this.directionType = Direction.create(direction);
-  }
-
-  public String getDirection() {
-    return direction;
   }
 
   @Override

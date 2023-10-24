@@ -20,11 +20,11 @@ public class Rover {
           if (command.equals("l")) {
 
             // Rotate Rover
-            if (getDirection().equals("N")) {
+            if (isFacingNorth()) {
               setDirection("W");
-            } else if (getDirection().equals("S")) {
+            } else if (isFacingSouth()) {
               setDirection("E");
-            } else if (getDirection().equals("W")) {
+            } else if (isFacingWest()) {
               setDirection("S");
             } else {
               setDirection("N");
@@ -32,11 +32,11 @@ public class Rover {
           } else if (command.equals("r")) {
 
             // Rotate Rover
-            if (getDirection().equals("N")) {
+            if (isFacingNorth()) {
               setDirection("E");
-            } else if (getDirection().equals("S")) {
+            } else if (isFacingSouth()) {
               setDirection("W");
-            } else if (getDirection().equals("W")) {
+            } else if (isFacingWest()) {
               setDirection("N");
             } else {
               setDirection("S");
@@ -51,11 +51,11 @@ public class Rover {
             }
             int displacement = displacement1;
 
-            if (getDirection().equals("N")) {
+            if (isFacingNorth()) {
               y += displacement;
-            } else if (getDirection().equals("S")) {
+            } else if (isFacingSouth()) {
               y -= displacement;
-            } else if (getDirection().equals("W")) {
+            } else if (isFacingWest()) {
               x -= displacement;
             } else {
               x += displacement;
@@ -63,6 +63,18 @@ public class Rover {
           }
         }
     }
+
+  private boolean isFacingWest() {
+    return Direction.W.equals(this.directionType);
+  }
+
+  private boolean isFacingSouth() {
+    return Direction.S.equals(this.directionType);
+  }
+
+  private boolean isFacingNorth() {
+    return Direction.N.equals(this.directionType);
+  }
 
   private void setDirection(String direction) {
     this.direction = direction;

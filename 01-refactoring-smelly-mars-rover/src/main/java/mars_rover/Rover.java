@@ -2,66 +2,66 @@ package mars_rover;
 
 public class Rover {
 
-    private Direction direction;
-    private int y;
-    private int x;
+  private Direction direction;
+  private int y;
+  private int x;
 
-    public Rover(int x, int y, String direction) {
-      this.direction = Direction.create(direction);
-      this.y = y;
-        this.x = x;
-    }
+  public Rover(int x, int y, String direction) {
+    this.direction = Direction.create(direction);
+    this.y = y;
+    this.x = x;
+  }
 
-    public void receive(String commandsSequence) {
-        for (int i = 0; i < commandsSequence.length(); ++i) {
-            String command = commandsSequence.substring(i, i + 1);
+  public void receive(String commandsSequence) {
+    for (int i = 0; i < commandsSequence.length(); ++i) {
+      String command = commandsSequence.substring(i, i + 1);
 
-          if (command.equals("l")) {
+      if (command.equals("l")) {
 
-            // Rotate Rover
-            if (isFacingNorth()) {
-              this.direction = Direction.create("W");
-            } else if (isFacingSouth()) {
-              this.direction = Direction.create("E");
-            } else if (isFacingWest()) {
-              this.direction = Direction.create("S");
-            } else {
-              this.direction = Direction.create("N");
-            }
-          } else if (command.equals("r")) {
-
-            // Rotate Rover
-            if (isFacingNorth()) {
-              this.direction = Direction.create("E");
-            } else if (isFacingSouth()) {
-              this.direction = Direction.create("W");
-            } else if (isFacingWest()) {
-              this.direction = Direction.create("N");
-            } else {
-              this.direction = Direction.create("S");
-            }
-          } else {
-
-            // Displace Rover
-            int displacement1 = -1;
-
-            if (command.equals("f")) {
-              displacement1 = 1;
-            }
-            int displacement = displacement1;
-
-            if (isFacingNorth()) {
-              y += displacement;
-            } else if (isFacingSouth()) {
-              y -= displacement;
-            } else if (isFacingWest()) {
-              x -= displacement;
-            } else {
-              x += displacement;
-            }
-          }
+        // Rotate Rover
+        if (isFacingNorth()) {
+          this.direction = Direction.create("W");
+        } else if (isFacingSouth()) {
+          this.direction = Direction.create("E");
+        } else if (isFacingWest()) {
+          this.direction = Direction.create("S");
+        } else {
+          this.direction = Direction.create("N");
         }
+      } else if (command.equals("r")) {
+
+        // Rotate Rover
+        if (isFacingNorth()) {
+          this.direction = Direction.create("E");
+        } else if (isFacingSouth()) {
+          this.direction = Direction.create("W");
+        } else if (isFacingWest()) {
+          this.direction = Direction.create("N");
+        } else {
+          this.direction = Direction.create("S");
+        }
+      } else {
+
+        // Displace Rover
+        int displacement1 = -1;
+
+        if (command.equals("f")) {
+          displacement1 = 1;
+        }
+        int displacement = displacement1;
+
+        if (isFacingNorth()) {
+          y += displacement;
+        } else if (isFacingSouth()) {
+          y -= displacement;
+        } else if (isFacingWest()) {
+          x -= displacement;
+        } else {
+          x += displacement;
+        }
+      }
     }
+  }
 
   private boolean isFacingWest() {
     return Direction.W.equals(this.direction);

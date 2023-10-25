@@ -9,16 +9,8 @@ public class Coordinates {
     this.y = y;
   }
 
-  public int getX() {
-    return x;
-  }
-
   public void setX(int x) {
     this.x = x;
-  }
-
-  public int getY() {
-    return y;
   }
 
   public void setY(int y) {
@@ -58,10 +50,10 @@ public class Coordinates {
   }
 
   Coordinates moveAlongYAxis(int displacement) {
-    return new Coordinates(getX(), getY() + displacement);
+    return new Coordinates(x, y + displacement);
   }
 
   Coordinates moveAlongXAxis(int displacement) {
-    return new Coordinates(getX() - displacement, getY());
+    return new Coordinates(x - displacement, y);
   }
 }

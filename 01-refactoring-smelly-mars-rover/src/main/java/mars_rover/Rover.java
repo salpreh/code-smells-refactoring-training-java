@@ -35,18 +35,6 @@ public class Rover {
     }
   }
 
-  private boolean isFacingWest() {
-    return Direction.W.equals(this.direction);
-  }
-
-  private boolean isFacingSouth() {
-    return Direction.S.equals(this.direction);
-  }
-
-  private boolean isFacingNorth() {
-    return Direction.N.equals(this.direction);
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {

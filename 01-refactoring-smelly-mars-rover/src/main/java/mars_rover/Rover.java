@@ -30,15 +30,7 @@ public class Rover {
         }
         int displacement = displacement1;
 
-        if (isFacingNorth()) {
-          this.coordinates = coordinates.moveAlongYAxis(displacement);
-        } else if (isFacingSouth()) {
-          this.coordinates = coordinates.moveAlongYAxis(-displacement);
-        } else if (isFacingWest()) {
-          this.coordinates = coordinates.moveAlongXAxis(displacement);
-        } else {
-          this.coordinates = coordinates.moveAlongXAxis(-displacement);
-        }
+        this.coordinates = this.direction.move(this.coordinates, displacement);
       }
     }
   }

@@ -17,17 +17,7 @@ public class Rover {
       String command = commandsSequence.substring(i, i + 1);
 
       if (command.equals("l")) {
-
-        // Rotate Rover
-        if (isFacingNorth()) {
-          this.direction = Direction.create("W");
-        } else if (isFacingSouth()) {
-          this.direction = Direction.create("E");
-        } else if (isFacingWest()) {
-          this.direction = Direction.create("S");
-        } else {
-          this.direction = Direction.create("N");
-        }
+        this.direction = this.direction.rotateLeft();
       } else if (command.equals("r")) {
 
         // Rotate Rover

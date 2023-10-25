@@ -6,20 +6,40 @@ public enum Direction {
     public Direction rotateLeft() {
       return Direction.create("W");
     }
+
+    @Override
+    public Direction rotateRight() {
+      return Direction.create("E");
+    }
   }, E {
     @Override
     public Direction rotateLeft() {
       return Direction.create("N");
+    }
+
+    @Override
+    public Direction rotateRight() {
+      return Direction.create("S");
     }
   }, S {
     @Override
     public Direction rotateLeft() {
       return Direction.create("E");
     }
+
+    @Override
+    public Direction rotateRight() {
+      return Direction.create("W");
+    }
   }, W {
     @Override
     public Direction rotateLeft() {
       return Direction.create("S");
+    }
+
+    @Override
+    public Direction rotateRight() {
+      return Direction.create("N");
     }
   };
 
@@ -29,4 +49,5 @@ public enum Direction {
   }
 
   public abstract Direction rotateLeft();
+  public abstract Direction rotateRight();
 }

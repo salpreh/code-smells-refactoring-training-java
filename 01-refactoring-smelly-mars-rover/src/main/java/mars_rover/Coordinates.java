@@ -56,4 +56,12 @@ public class Coordinates {
       ", y=" + y +
       '}';
   }
+
+  Coordinates moveAlongYAxis(int displacement) {
+    return new Coordinates(getX(), getY() + displacement);
+  }
+
+  Coordinates moveAlongXAxis(int displacement) {
+    return new Coordinates(getX() - displacement, getY());
+  }
 }

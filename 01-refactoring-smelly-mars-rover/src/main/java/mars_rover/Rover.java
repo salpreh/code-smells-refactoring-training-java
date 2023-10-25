@@ -1,10 +1,11 @@
 package mars_rover;
 
+import java.util.Objects;
+
 public class Rover {
 
   private Direction direction;
-  private int y;
-  private int x;
+  private Coordinates coordinates;
 
   public Rover(int x, int y, String direction) {
     this.direction = Direction.create(direction);
@@ -12,8 +13,7 @@ public class Rover {
   }
 
   private void setCoordinates(int x, int y) {
-    this.y = y;
-    this.x = x;
+    this.coordinates = new Coordinates(x, y);
   }
 
   public void receive(String commandsSequence) {
@@ -55,13 +55,13 @@ public class Rover {
         int displacement = displacement1;
 
         if (isFacingNorth()) {
-          setCoordinates(x, y + displacement);
+          setCoordinates(coordinates.getX(), coordinates.getY() + displacement);
         } else if (isFacingSouth()) {
-          setCoordinates(x, y - displacement);
+          setCoordinates(coordinates.getX(), coordinates.getY() - displacement);
         } else if (isFacingWest()) {
-          setCoordinates(x - displacement, y);
+          setCoordinates(coordinates.getX() - displacement, coordinates.getY());
         } else {
-          setCoordinates(x + displacement, y);
+          setCoordinates(coordinates.getX() + displacement, coordinates.getY());
         }
       }
     }
@@ -90,29 +90,24 @@ public class Rover {
 
     Rover rover = (Rover) o;
 
-    if (y != rover.y) {
+    if (direction != rover.direction) {
       return false;
     }
-    if (x != rover.x) {
-      return false;
-    }
-    return direction == rover.direction;
+    return Objects.equals(coordinates, rover.coordinates);
   }
 
   @Override
   public int hashCode() {
     int result = direction != null ? direction.hashCode() : 0;
-    result = 31 * result + y;
-    result = 31 * result + x;
+    result = 31 * result + (coordinates != null ? coordinates.hashCode() : 0);
     return result;
   }
 
   @Override
   public String toString() {
     return "Rover{" +
-      "directionType=" + direction +
-      ", y=" + y +
-      ", x=" + x +
+      "direction=" + direction +
+      ", coordinates=" + coordinates +
       '}';
   }
 }
